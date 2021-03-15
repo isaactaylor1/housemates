@@ -1,4 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/dashmix.app.js": "/js/dashmix.app.js",
+    "/css/dashmix.css": "/css/dashmix.css",
+    "/css/bootstrap.css": "/css/bootstrap.css",
+    "/js/staff/app.app.js": "/js/staff/app.app.js"
 }
