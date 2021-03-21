@@ -3,6 +3,7 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Toasted from 'vue-toasted'
+import "./filter";
 
 import {
 	ValidationProvider,
@@ -17,11 +18,16 @@ Vue.use(Toasted, {
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
-const Account = require('./components/Account.vue').default
+const AccountsList = require('./components/BankAccounts.vue').default
+const AccountView = require('./components/Account.vue').default
 
 const routes = [{
-		path: '/account',
-		component: Account,
+		path: '/accounts-list',
+		component: AccountsList,
+	},
+	{
+		path: '/account/:id',
+		component: AccountView,
 	},
 ]
 
@@ -45,6 +51,15 @@ const app = new Vue({
 			} else {
 				this.$toasted.success(message, options);
 			}
+		},
+		difference_percentage (num1, num2) {
+			if (num1 > 0 && num2 > 0) {
+			  	return ((num1 / num2) * 100 - 100).toFixed()
+			}
+			return null
+		  },
+		format_number (val) {
+			return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 		}
 	}
 })
